@@ -1,6 +1,6 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
-# Title
+# SPI driver asynchronous - multi instance
 
 This example application demonstrates the multi instance feature of the asynchronous mode of the SPI driver by reading and writing to two EEPROMs connected to two different SPI bus.
 
