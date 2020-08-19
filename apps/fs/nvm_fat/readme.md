@@ -1,6 +1,6 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
-# Title
+# FAT filesystem using NVM Media
 
 This application shows an example of implementing a FAT disk in the device internal Flash memory.
 
