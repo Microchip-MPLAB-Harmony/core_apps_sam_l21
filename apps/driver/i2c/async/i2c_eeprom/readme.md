@@ -1,6 +1,6 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
-# Title
+# I2C driver asynchronous - I2C EEPROM
 
 This example application demonstrates how to use the I2C driver in asynchronous mode to perform read/write operations on an EEPROM.
 
