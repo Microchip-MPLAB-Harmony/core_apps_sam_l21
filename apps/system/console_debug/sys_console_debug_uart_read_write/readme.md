@@ -1,6 +1,6 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
-# Title
+# Console Debug System Service using UART
 
 This example application demonstrates the UART based console and debug system service.
 
