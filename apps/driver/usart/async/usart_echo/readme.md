@@ -1,6 +1,6 @@
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
-# Title
+# USART driver asynchronous - USART echo
 
 This example application demonstrates the asynchronous mode of the USART driver by echoing the received characters
 
