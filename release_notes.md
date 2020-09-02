@@ -1,28 +1,40 @@
-﻿![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
+---
+title: Release notes
+nav_order: 99
+---
+
+![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
-## Harmony 3 core library application examples for SAM L21 family v3.8.0
+## Harmony 3 driver and system service application examples for SAM L21 family  v3.0.0
+
+### Development kit and demo application support
+
+Following table provides number of peripheral library examples available for different development kits.
+
+| Development Kits  | MPLABx applications |
+|:-----------------:|:-------------------:|
+| [SAM L21 Xplained Pro Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/ATSAML21-XPRO-B) | 10 |
 
 ### New Features
 
-- **Development kit and demo application support** - The following table provides number of peripheral library application available for different development kits
+New features added in this release are as follows:
 
-    | Development Kits                                                                                                                               | Number of applications |
-    | ---                                                                                                                                            | --- |
-    | [SAM D21 Xplained Pro Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails.aspx?PartNO=ATSAMD21-XPRO)                     | 8 |
+- Applications migrated from csp repository to this new application repository for SAM L21 development boards
+
 
 ### Known Issues
 
 The current known issues are as follows:
 
-- <fill me>
+- The following product family requires newer DFP version to be downloaded from packs server and to be used in the MPLAB project to build with MPLAB X IDE v5.4.
+  - **SAM L21 Family**: SAML21_DFP v3.4.80
 
 ### Development Tools
 
 - [MPLAB® X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide)
-- [MPLAB® XC32 C/C++ Compiler v2.40](https://www.microchip.com/mplab/compilers)
-- [IAR Embedded Workbench® for ARM® (v8.32 or above)](https://www.iar.com/iar-embedded-workbench/#!?architecture=Arm)
 - MPLAB® X IDE plug-ins:
-  - MPLAB® Harmony Configurator (MHC) v3.3.0.0 and above.
+  - MPLAB® Harmony Configurator (MHC) v3.6.0
+- [MPLAB® XC32 C/C++ Compiler v2.41](https://www.microchip.com/mplab/compilers)
