@@ -5,7 +5,7 @@
     Microchip Technology Inc.
 
   File Name:
-    app1.c
+    task4.c
 
   Summary:
     This file contains the source code for the MPLAB Harmony application.
@@ -21,47 +21,24 @@
     files.
  *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
-* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
-// DOM-IGNORE-END
-
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
 
-#include "app1.h"
-#include "queue.h"
-
+#include "task4.h"
+#include "definitions.h"
+#include <string.h>
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
 
+TASK4_DATA task4Data;
+static SemaphoreHandle_t switchPressSemaphore;
+extern SemaphoreHandle_t uartMutexLock;
 // *****************************************************************************
 /* Application Data
 
@@ -72,13 +49,11 @@
     This structure holds the application's data.
 
   Remarks:
-    This structure should be initialized by the APP1_Initialize function.
+    This structure should be initialized by the TASK4_Initialize function.
 
     Application strings and buffers are be defined outside this structure.
 */
 
-APP1_DATA app1Data;
-extern QueueHandle_t xQueue;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -86,8 +61,18 @@ extern QueueHandle_t xQueue;
 // *****************************************************************************
 // *****************************************************************************
 
-/* TODO:  Add any necessary callback functions.
-*/
+static void EIC_User_Handler(uintptr_t context)
+{
+    BaseType_t xHigherPriorityTaskWoken;
+
+    /* Unblock the task by releasing the semaphore. */
+    xSemaphoreGiveFromISR( switchPressSemaphore, &xHigherPriorityTaskWoken );
+
+    /* If xHigherPriorityTaskWoken was set to true you
+    we should yield */
+
+    portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
+}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -108,16 +93,16 @@ extern QueueHandle_t xQueue;
 
 /*******************************************************************************
   Function:
-    void APP1_Initialize ( void )
+    void TASK4_Initialize ( void )
 
   Remarks:
-    See prototype in app1.h.
+    See prototype in task4.h.
  */
 
-void APP1_Initialize ( void )
+void TASK4_Initialize ( void )
 {
-    /* Place the App1 state machine in its initial state. */
-    app1Data.state = APP1_STATE_INIT;
+    /* Place the App state machine in its initial state. */
+    task4Data.state = TASK4_STATE_INIT;
 
 
 
@@ -129,31 +114,46 @@ void APP1_Initialize ( void )
 
 /******************************************************************************
   Function:
-    void APP1_Tasks ( void )
+    void TASK4_Tasks ( void )
 
   Remarks:
-    See prototype in app1.h.
+    See prototype in task4.h.
  */
 
-void APP1_Tasks ( void )
+void TASK4_Tasks ( void )
 {
-    unsigned long ulReceivedValue = 0;
+    bool status = false;
+    TickType_t timeNow;
 
-    /* Wait until something arrives in the queue - this task will block
-     * indefinitely provided INCLUDE_vTaskSuspend is set to 1 in
-     * FreeRTOSConfig.h.
-     */
-    xQueueReceive( xQueue, &ulReceivedValue, portMAX_DELAY );
+    EIC_CallbackRegister(EIC_PIN_2, EIC_User_Handler, 0);
 
-    /* To get here something must have been received from the queue, but
-     * is it the expected value?  If it is, toggle the LED.
-     */
-    if( ulReceivedValue == 1000UL )
+    switchPressSemaphore = xSemaphoreCreateBinary();
+
+    if (switchPressSemaphore != NULL)
     {
-        LED_TOGGLE();
-        vTaskDelay((TickType_t)ulReceivedValue);
+        status = true;
     }
 
+    while (status == true)
+    {
+        /* Block until user presses the switch */
+        if( xSemaphoreTake( switchPressSemaphore, portMAX_DELAY ) == pdTRUE )
+        {
+            /* Task4 is running (<-) now */
+            xSemaphoreTake(uartMutexLock, portMAX_DELAY);
+            SERCOM3_USART_Write((uint8_t*)"                                Tsk4-P4 <-\r\n", 44);
+            xSemaphoreGive(uartMutexLock);
+
+            /* Work done by task3 for 10 ticks */
+            timeNow = xTaskGetTickCount();
+            while ((xTaskGetTickCount() - timeNow) < 10);
+
+            /* Task4 is exiting (->) now */
+            xSemaphoreTake(uartMutexLock, portMAX_DELAY);
+            SERCOM3_USART_Write((uint8_t*)"                                Tsk4-P4 ->\r\n", 44);
+            xSemaphoreGive(uartMutexLock);
+        }
+    }
 }
 
 
