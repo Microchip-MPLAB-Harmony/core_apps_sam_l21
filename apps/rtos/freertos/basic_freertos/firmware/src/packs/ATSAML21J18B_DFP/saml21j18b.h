@@ -1,7 +1,7 @@
 /**
  * \brief Header file for ATSAML21J18B
  *
- * Copyright (c) 2020 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -273,6 +273,50 @@ void TRNG_Handler                  ( void );
 #include "component/usb.h"
 #include "component/wdt.h"
 /** @}  end of Peripheral Software API */
+
+/* ************************************************************************** */
+/*   INSTANCE DEFINITIONS FOR SAML21J18B */
+/* ************************************************************************** */
+#include "instance/ac.h"
+#include "instance/adc.h"
+#include "instance/aes.h"
+#include "instance/ccl.h"
+#include "instance/dac.h"
+#include "instance/dmac.h"
+#include "instance/dsu.h"
+#include "instance/eic.h"
+#include "instance/evsys.h"
+#include "instance/gclk.h"
+#include "instance/mclk.h"
+#include "instance/mtb.h"
+#include "instance/nvmctrl.h"
+#include "instance/opamp.h"
+#include "instance/osc32kctrl.h"
+#include "instance/oscctrl.h"
+#include "instance/pac.h"
+#include "instance/pm.h"
+#include "instance/port.h"
+#include "instance/ptc.h"
+#include "instance/rstc.h"
+#include "instance/rtc.h"
+#include "instance/sercom0.h"
+#include "instance/sercom1.h"
+#include "instance/sercom2.h"
+#include "instance/sercom3.h"
+#include "instance/sercom4.h"
+#include "instance/sercom5.h"
+#include "instance/supc.h"
+#include "instance/tc0.h"
+#include "instance/tc1.h"
+#include "instance/tc2.h"
+#include "instance/tc3.h"
+#include "instance/tc4.h"
+#include "instance/tcc0.h"
+#include "instance/tcc1.h"
+#include "instance/tcc2.h"
+#include "instance/trng.h"
+#include "instance/usb.h"
+#include "instance/wdt.h"
 
 /** \addtogroup SAML21J18B_id Peripheral Ids Definitions
  *  @{
