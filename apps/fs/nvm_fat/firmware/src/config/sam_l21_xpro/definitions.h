@@ -60,8 +60,8 @@
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
-#include "driver/memory/drv_memory.h"
 #include "peripheral/pm/plib_pm.h"
+#include "driver/memory/drv_memory.h"
 #include "system/int/sys_int.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
@@ -77,6 +77,12 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* Device Information */
+#define DEVICE_NAME			 "ATSAML21J18B"
+#define DEVICE_ARCH			 "CORTEX-M0PLUS"
+#define DEVICE_FAMILY		 "SAML"
+#define DEVICE_SERIES		 "SAML21"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 48000000
