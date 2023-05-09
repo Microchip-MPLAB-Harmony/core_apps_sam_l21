@@ -53,9 +53,9 @@
 #include "peripheral/port/plib_port.h"
 #include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
-#include "peripheral/pm/plib_pm.h"
 #include "usb/usb_chapter_9.h"
 #include "usb/usb_device.h"
+#include "peripheral/pm/plib_pm.h"
 #include "usb/usb_device_cdc.h"
 #include "usb/usb_cdc.h"
 #include "driver/usb/usbfsv1/drv_usbfsv1.h"
@@ -76,6 +76,12 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* Device Information */
+#define DEVICE_NAME			 "ATSAML21J18B"
+#define DEVICE_ARCH			 "CORTEX-M0PLUS"
+#define DEVICE_FAMILY		 "SAML"
+#define DEVICE_SERIES		 "SAML21"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 48000000
@@ -192,7 +198,7 @@ typedef struct
 {
     SYS_MODULE_OBJ  sysConsole1;
 
-	SYS_MODULE_OBJ  usbDevObject0;
+    SYS_MODULE_OBJ  usbDevObject0;
 
     SYS_MODULE_OBJ  sysDebug;
 

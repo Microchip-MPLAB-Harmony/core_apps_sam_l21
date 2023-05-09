@@ -90,6 +90,7 @@
           <itemPath>../src/config/sam_l21_xpro/configuration.h</itemPath>
           <itemPath>../src/config/sam_l21_xpro/interrupts.h</itemPath>
           <itemPath>../src/config/sam_l21_xpro/device_vectors.h</itemPath>
+          <itemPath>../src/config/sam_l21_xpro/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="packs" projectFiles="true">
@@ -302,12 +303,12 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.21</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
+        <pack name="SAML21_DFP" vendor="Microchip" version="3.6.105"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
-        <pack name="SAML21_DFP" vendor="Microchip" version="3.5.87"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -515,6 +516,7 @@
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
         <property key="freeze.timers" value="false"/>
         <property key="lastid" value=""/>
+        <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -1059,6 +1061,7 @@
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
         <property key="freeze.timers" value="false"/>
         <property key="lastid" value=""/>
+        <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
