@@ -58,8 +58,8 @@
 #include "peripheral/eic/plib_eic.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "osal/osal.h"
 #include "bsp/bsp.h"
+#include "osal/osal.h"
 #include "task1.h"
 #include "task2.h"
 #include "task3.h"
@@ -76,13 +76,13 @@ extern "C" {
 // DOM-IGNORE-END
 
 /* Device Information */
-#define DEVICE_NAME			 "ATSAML21J18B"
-#define DEVICE_ARCH			 "CORTEX-M0PLUS"
-#define DEVICE_FAMILY		 "SAML"
-#define DEVICE_SERIES		 "SAML21"
+#define DEVICE_NAME          "ATSAML21J18B"
+#define DEVICE_ARCH          "CORTEX-M0PLUS"
+#define DEVICE_FAMILY        "SAML"
+#define DEVICE_SERIES        "SAML21"
 
 /* CPU clock frequency */
-#define CPU_CLOCK_FREQUENCY 48000000
+#define CPU_CLOCK_FREQUENCY 48000000U
 
 // *****************************************************************************
 // *****************************************************************************
