@@ -200,7 +200,6 @@
         <itemPath>async_usart_echo_sam_l21_xpro_sam_l21_xpro/mcc-config.mc4</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/sam_l21_xpro/harmony-manifest-success.yml</itemPath>
       <itemPath>../src/config/sam_l21_xpro/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"

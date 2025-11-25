@@ -30,7 +30,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\sam_l21_xpro\configuration.h
   hash: 6d02af7fb7ed204d61161a641f9cfc801f7416d5639126d0179a8b748f895b8d
 - file: ..\src\config\sam_l21_xpro\definitions.h
-  hash: 991666bc1dc1ee72d5a0a20208f6de2a418144e6d7ec72517258ea24ab34ad00
+  hash: 173cff8646d09b5282a14ebdfd50e3464789c0fa1b092c4900be54b2cf98886e
 - file: ..\src\config\sam_l21_xpro\device.h
   hash: d91a174755c3e4150d6658753b2298b731c72e9e4dfd38533c73004b5c0abcf4
 - file: ..\src\config\sam_l21_xpro\device_cache.h

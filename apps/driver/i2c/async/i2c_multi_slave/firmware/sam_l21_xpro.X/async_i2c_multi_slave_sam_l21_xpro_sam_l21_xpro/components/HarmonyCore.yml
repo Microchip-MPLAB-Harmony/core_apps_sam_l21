@@ -57,14 +57,6 @@ data:
       children:
       - children:
         - attributes:
-            id: readOnly
-          children:
-          - type: Value
-            value: 'true'
-          type: Boolean
-        type: Attributes
-      - children:
-        - attributes:
             id: drv_i2c
             value: 'true'
           type: Dynamic
